@@ -1,0 +1,30 @@
+{
+  "name": "employee-creator",
+  "version": "1.0.0",
+  "description": "Packages for employee creator",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lbburnsy/employee-creator.git"
+  },
+  "keywords": [
+    "employee",
+    "creator"
+  ],
+  "author": "Luc Burns",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lbburnsy/employee-creator/issues"
+  },
+  "homepage": "https://github.com/lbburnsy/employee-creator#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^26.6.3"
+  }
+}
