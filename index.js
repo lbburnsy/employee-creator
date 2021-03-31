@@ -6,6 +6,7 @@ const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager");
 
 // Do I need an array or something to store?
+const employees = [];
 
 // A function to handle the inquirer prompts
 
