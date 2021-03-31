@@ -33,8 +33,32 @@ function addEmployee() {
             ],
             name: "role"
         }
-    ]).then((data) => {
-        console.log(data);
+    ]).then(({name, id, email, role}) => {
+        let roleSpecific;
+        if (role === 'Intern') {
+            roleSpecific = 'school:'
+        } else if (role === 'Engineer') {
+            roleSpecific = 'GitHub username:'
+        } else {
+            roleSpecific = 'office number:'
+        }
+        inquirer.prompt([
+            {
+                message: `Enter the ${role}'s ${roleSpecific}`,
+                name: 'specific'
+            },
+            {
+                type: 'list',
+                message: 'Would you like to create another employee?',
+                name: 'addAnother',
+                choices: [
+                    'yes',
+                    'no'
+                ]
+            }
+        ]).then(({specific, addAnother}) => {
+            console.log(name, id, email, role, specific, addAnother);
+        })
     })
 }
 
