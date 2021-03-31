@@ -93,9 +93,11 @@ function addEmployee() {
 
 // addEmployee();
 
-
-
 // Need to figure out how to write and/or append html
-console.log(starterCode.getStarterCode(), finishCode.getFinishCode());
+// console.log(starterCode.getStarterCode(), finishCode.getFinishCode());
 
 // Function to init app?
+
+function init() {
+    addEmployee();
+}
