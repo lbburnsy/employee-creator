@@ -10,6 +10,7 @@ const employees = [];
 
 // A function to handle the inquirer prompts
 function addEmployee() {
+    // Initial prompts to collect generic data for all roles
     inquirer.prompt([
         {
             message: "Enter employee's name:",
@@ -33,7 +34,9 @@ function addEmployee() {
             ],
             name: "role"
         }
-    ]).then(({name, id, email, role}) => {
+    ])
+    // Checks which role, and then collects the specific data for that role
+    .then(({name, id, email, role}) => {
         let roleSpecific;
         if (role === 'Intern') {
             roleSpecific = 'school:'
@@ -56,7 +59,9 @@ function addEmployee() {
                     'no'
                 ]
             }
-        ]).then(({specific, addAnother}) => {
+        ])
+        // Checks what the role is, and then creates a new instance with all relevant data
+        .then(({specific, addAnother}) => {
             // console.log(name, id, email, role, specific, addAnother);
             let employee;
 
@@ -67,8 +72,10 @@ function addEmployee() {
             } else {
                 employee = new Manager(name, id, email, specific);
             }
+            // Pushes the created employee into the general array
             employees.push(employee);
-
+            
+            // Runs logic depending on if you'd like to add another employee
             if (addAnother === 'yes') {
                 addEmployee();
             } else {
