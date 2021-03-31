@@ -57,7 +57,24 @@ function addEmployee() {
                 ]
             }
         ]).then(({specific, addAnother}) => {
-            console.log(name, id, email, role, specific, addAnother);
+            // console.log(name, id, email, role, specific, addAnother);
+            let employee;
+
+            if (role == 'Intern') {
+                employee = new Intern(name, id, email, specific);
+            } else if (role == 'Engineer') {
+                employee = new Engineer(name, id, email, specific);
+            } else {
+                employee = new Manager(name, id, email, specific);
+            }
+            employees.push(employee);
+
+            if (addAnother === 'yes') {
+                addEmployee();
+            } else {
+                console.log(employees);
+                return
+            }
         })
     })
 }
