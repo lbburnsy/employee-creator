@@ -10,6 +10,10 @@ const starterCode = new StarterHTML();
 const FinishHTML = require("./lib/FinishHTML");
 const finishCode = new FinishHTML();
 
+const InternHTML = require("./lib/InternHTML");
+const EngineerHTML = require("./lib/EngineerHTML");
+
+
 // Do I need an array or something to store?
 const employees = [];
 
@@ -69,11 +73,14 @@ function addEmployee() {
         .then(({specific, addAnother}) => {
             // console.log(name, id, email, role, specific, addAnother);
             let employee;
+            let html;
 
             if (role == 'Intern') {
                 employee = new Intern(name, id, email, specific);
+                appendIntern(name, id, email, specific);
             } else if (role == 'Engineer') {
                 employee = new Engineer(name, id, email, specific);
+                appendEngineer(name, id, email, specific);
             } else {
                 employee = new Manager(name, id, email, specific);
             }
@@ -100,7 +107,6 @@ function writeHTML() {
     let html = starterCode.getStarterCode();
     fs.writeFile("./output/index.html", html, (err) => {
         if (err) throw err;
-        console.log('The file has been created');
     });
 }
 
@@ -112,11 +118,25 @@ function appendFinishHTML() {
     })
 }
 
+function appendIntern(name, id, email, specific) {
+    html = new InternHTML(name, id, email, specific);
+    fs.appendFile("./output/index.html", html.getCode(), (err) => {
+        if (err) throw err;
+    })
+}
+
+function appendEngineer(name, id, email, specific) {
+    html = new EngineerHTML(name, id, email, specific);
+    fs.appendFile("./output/index.html", html.getCode(), (err) => {
+        if (err) throw err;
+    })
+}
+
 // Function to init app?
 
 function init() {
     writeHTML();
-    // addEmployee();
+    addEmployee();
 }
 
 init();
