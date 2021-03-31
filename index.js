@@ -95,9 +95,19 @@ function addEmployee() {
 
 // Need to figure out how to write and/or append html
 // console.log(starterCode.getStarterCode(), finishCode.getFinishCode());
+function writeHTML() {
+    let html = starterCode.getStarterCode();
+    fs.writeFile("index.html", html, (err) => {
+        if (err) throw err;
+        console.log('The file has been created');
+    });
+}
 
 // Function to init app?
 
 function init() {
-    addEmployee();
+    writeHTML();
+    // addEmployee();
 }
+
+init();
