@@ -85,6 +85,7 @@ function addEmployee() {
                 addEmployee();
             } else {
                 console.log(employees);
+                appendFinishHTML();
                 return
             }
         })
@@ -97,10 +98,18 @@ function addEmployee() {
 // console.log(starterCode.getStarterCode(), finishCode.getFinishCode());
 function writeHTML() {
     let html = starterCode.getStarterCode();
-    fs.writeFile("index.html", html, (err) => {
+    fs.writeFile("./output/index.html", html, (err) => {
         if (err) throw err;
         console.log('The file has been created');
     });
+}
+
+function appendFinishHTML() {
+    let html = finishCode.getFinishCode();
+    fs.appendFile("./output/index.html", html, (err) => {
+        if (err) throw err;
+        console.log('The file has been finished');
+    })
 }
 
 // Function to init app?
