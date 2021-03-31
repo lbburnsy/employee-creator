@@ -12,7 +12,7 @@ const finishCode = new FinishHTML();
 
 const InternHTML = require("./lib/InternHTML");
 const EngineerHTML = require("./lib/EngineerHTML");
-
+const ManagerHTML = require("./lib/ManagerHTML");
 
 // Do I need an array or something to store?
 const employees = [];
@@ -83,6 +83,7 @@ function addEmployee() {
                 appendEngineer(name, id, email, specific);
             } else {
                 employee = new Manager(name, id, email, specific);
+                appendManager(name, id, email, specific)
             }
             // Pushes the created employee into the general array
             employees.push(employee);
@@ -114,7 +115,7 @@ function appendFinishHTML() {
     let html = finishCode.getFinishCode();
     fs.appendFile("./output/index.html", html, (err) => {
         if (err) throw err;
-        console.log('The file has been finished');
+        console.log('Your team has been created. Visit the output folder to view:');
     })
 }
 
@@ -127,6 +128,13 @@ function appendIntern(name, id, email, specific) {
 
 function appendEngineer(name, id, email, specific) {
     html = new EngineerHTML(name, id, email, specific);
+    fs.appendFile("./output/index.html", html.getCode(), (err) => {
+        if (err) throw err;
+    })
+}
+
+function appendManager(name, id, email, specific) {
+    html = new ManagerHTML(name, id, email, specific);
     fs.appendFile("./output/index.html", html.getCode(), (err) => {
         if (err) throw err;
     })
