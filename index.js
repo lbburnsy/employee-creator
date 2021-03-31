@@ -5,6 +5,11 @@ const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager");
 
+const StarterHTML = require("./lib/StarterHTML");
+const starterCode = new StarterHTML();
+const FinishHTML = require("./lib/FinishHTML");
+const finishCode = new FinishHTML();
+
 // Do I need an array or something to store?
 const employees = [];
 
@@ -86,8 +91,11 @@ function addEmployee() {
     })
 }
 
-addEmployee();
+// addEmployee();
+
+
 
 // Need to figure out how to write and/or append html
+console.log(starterCode.getStarterCode(), finishCode.getFinishCode());
 
 // Function to init app?
